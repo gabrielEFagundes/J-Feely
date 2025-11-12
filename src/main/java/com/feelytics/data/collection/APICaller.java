@@ -2,6 +2,7 @@ package com.feelytics.data.collection;
 
 import com.feelytics.data.model.Basis;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -18,20 +19,22 @@ public class APICaller {
                     .build();
 
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("localhost:5000/api/data/reddit" + query))
+                    .uri(URI.create("http://localhost:5000/api/data/reddit?query=" + query))
                     .timeout(Duration.ofSeconds(10))
-                    .header("Java Data Collector", "application/json")
-                    .GET()
+                    .header("JFeelyCollector", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(query))
+                    .timeout(Duration.ofSeconds(200))
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if(response.statusCode() == 200){
-                // then turn this into GSON
+                Basis obj = new Gson().fromJson(response.body(), Basis.class);
+                System.out.println(obj.getMost_scored_post_title());
             }
 
         }catch(Exception e){
-            return null;
+            e.printStackTrace();
         }
 
         return null;

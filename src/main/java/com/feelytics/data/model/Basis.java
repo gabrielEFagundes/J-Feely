@@ -1,5 +1,7 @@
 package com.feelytics.data.model;
 
+import java.util.ArrayList;
+
 public class Basis {
 
     // FAMOUS POSTS
@@ -21,12 +23,13 @@ public class Basis {
     private String topic_engajement_level_in_word;
     private String one_emoji_popular_opinion_about_topic;
 
-    private String[] three_similar_topics_in_one_word;
+    private ArrayList<String> three_similar_topics_in_one_word;
     private String main_subreddit_about_topic;
-    // private String about_main_subreddit;  TO IMPLEMENT!
     private String resume_about_analysis_and_popular_opinion;
 
-    public Basis(String most_scored_post_title, String most_scored_post_body, String most_scored_post_author, int most_scored_post_score, String second_most_scored_post_title, String second_most_scored_post_body, String second_most_scored_post_author, int second_most_scored_post_score, int amount_of_relevant_posts_on_analysis, String topic_engajement_level_in_word, String one_emoji_popular_opinion_about_topic, String[] three_similar_topics_in_one_word, String main_subreddit_about_topic, String resume_about_analysis_and_popular_opinion) {
+    // private String about_main_subreddit; TO IMPLEMENT!
+
+    public Basis(String most_scored_post_title, String most_scored_post_body, String most_scored_post_author, int most_scored_post_score, String second_most_scored_post_title, String second_most_scored_post_body, String second_most_scored_post_author, int second_most_scored_post_score, int amount_of_relevant_posts_on_analysis, String topic_engajement_level_in_word, String one_emoji_popular_opinion_about_topic, ArrayList<String> three_similar_topics_in_one_word, String main_subreddit_about_topic, String resume_about_analysis_and_popular_opinion) {
         this.most_scored_post_title = most_scored_post_title;
         this.most_scored_post_body = most_scored_post_body;
         this.most_scored_post_author = most_scored_post_author;
@@ -131,11 +134,11 @@ public class Basis {
         this.one_emoji_popular_opinion_about_topic = one_emoji_popular_opinion_about_topic;
     }
 
-    public String[] getThree_similar_topics_in_one_word() {
+    public ArrayList<String> getThree_similar_topics_in_one_word() {
         return three_similar_topics_in_one_word;
     }
 
-    public void setThree_similar_topics_in_one_word(String[] three_similar_topics_in_one_word) {
+    public void setThree_similar_topics_in_one_word(ArrayList<String> three_similar_topics_in_one_word) {
         this.three_similar_topics_in_one_word = three_similar_topics_in_one_word;
     }
 
