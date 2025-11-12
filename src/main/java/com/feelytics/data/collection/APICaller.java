@@ -3,6 +3,7 @@ package com.feelytics.data.collection;
 import com.feelytics.data.model.Basis;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -29,7 +30,12 @@ public class APICaller {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if(response.statusCode() == 200){
-                Basis obj = new Gson().fromJson(response.body(), Basis.class);
+                Gson gson = new Gson();
+                JSONObject jsonObject = new JSONObject(response.body());
+
+                Basis obj = gson.fromJson(String.valueOf(jsonObject), Basis.class);
+
+                System.out.println("It worked!");
                 System.out.println(obj.getMost_scored_post_title());
             }
 
