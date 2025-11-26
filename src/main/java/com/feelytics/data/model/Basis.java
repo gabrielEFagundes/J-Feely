@@ -157,4 +157,17 @@ public class Basis {
     public void setResume_about_analysis_and_popular_opinion(String resume_about_analysis_and_popular_opinion) {
         this.resume_about_analysis_and_popular_opinion = resume_about_analysis_and_popular_opinion;
     }
+
+    @Override
+    public String toString() {
+        return (this.most_scored_post_title + " | " + this.most_scored_post_body + " | "
+                + this.most_scored_post_author + " | " + this.most_scored_post_score + "\n\n"
+                + this.second_most_scored_post_title + " | " + this.second_most_scored_post_body + " | "
+                + this.second_most_scored_post_author + " | " + this.second_most_scored_post_score + "\n\n"
+                + this.amount_of_relevant_posts_on_analysis + " | " + this.topic_engajement_level_in_word + "\n\n"
+                + this.one_emoji_popular_opinion_about_topic + "\n"
+                + this.three_similar_topics_in_one_word + "\n\n"
+                + this.main_subreddit_about_topic + "\n"
+                + this.resume_about_analysis_and_popular_opinion);
+    }
 }

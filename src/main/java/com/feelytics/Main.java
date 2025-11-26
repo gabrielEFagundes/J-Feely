@@ -7,7 +7,7 @@ public class Main {
 
         APICaller caller = new APICaller();
 
-        caller.getApiData("Jesus");
+        caller.getApiData("Testing");
 
     }
 }
