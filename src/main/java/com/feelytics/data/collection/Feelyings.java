@@ -1,38 +1,32 @@
 package com.feelytics.data.collection;
 
-import com.feelytics.data.model.Basis;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.google.gson.*;
 
-import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
-import java.util.List;
+public class Feelyings {
 
-public class APICaller {
-
+    Gson lenientGson = new GsonBuilder().setLenient().create();
     /**
-     * Gets the data from the rest API
+     * Gets the data from the restAPI
      * @param query it's what you want to search for, can be any keyword!
      * <p>
      * @since 1.0.1
      * <h4>HUGE data clearing</h4>
      * Because {@code responseBody} comes as a String
      * <p>
-     * That's on me, the API server returns the JSON wrapped in quotes, which means
+     * That's on me. The API server returns the JSON wrapped in quotes, which means
      * it's actually a String, instead of a JSONArray
      * @author gabrielEFagundes
+     *
+     * @since 1.0.2
+     * I give up. I really don't know anymore how to make this work without changing the API itself.
      */
-    public Basis getApiData(String query){
+    public void getFeelyings(String query){
         try {
             HttpClient client = HttpClient.newBuilder()
                     .connectTimeout(Duration.ofSeconds(10))
@@ -60,21 +54,24 @@ public class APICaller {
                 String cleanJson = rawData.replace("\\\"", "\"");
                 cleanJson = cleanJson.replace('\u00a0', ' ');
                 cleanJson = cleanJson.replace("\\n", "").replace("\\t", "").replace("\\", "");
+                cleanJson = cleanJson.replaceAll("[^\\p{L}\\p{N}\\p{P}\\[\\]{}:, \"\\s]+", " ");
 
                 cleanJson = cleanJson.trim();
                 System.out.println(cleanJson);
 
-                Gson gson = new Gson();
-                JsonArray obj = JsonParser.parseString(cleanJson).getAsJsonArray();
+//                JsonElement obj = JsonParser.parseString(cleanJson);
+//                JsonArray dataArr = obj.getAsJsonArray();
+//
+//                dataArr = lenientGson.fromJson(cleanJson, JsonArray.class);
+//
+//                dataArr.forEach(System.out::println);
 
-                obj.forEach(System.out::println);
+                // I'm done
             }
 
         }catch(Exception e){
             e.printStackTrace();
         }
-
-        return null;
     }
 
 }
