@@ -1,13 +1,13 @@
 package com.feelytics;
 
-import com.feelytics.data.collection.APICaller;
+import com.feelytics.data.collection.Feelyings;
 
 public class Main {
     public static void main(String[] args) {
 
-        APICaller caller = new APICaller();
+        Feelyings feelyings = new Feelyings();
 
-        caller.getApiData("Jesus");
+        feelyings.getFeelyings("Testing");
 
     }
 }

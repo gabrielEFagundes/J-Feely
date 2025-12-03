@@ -2,7 +2,7 @@ package com.feelytics.data.model;
 
 import java.util.ArrayList;
 
-public class Basis {
+public class FeelyticsBase {
 
     // FAMOUS POSTS
     private String most_scored_post_title,
@@ -29,7 +29,7 @@ public class Basis {
 
     // private String about_main_subreddit; TO IMPLEMENT!
 
-    public Basis(String most_scored_post_title, String most_scored_post_body, String most_scored_post_author, int most_scored_post_score, String second_most_scored_post_title, String second_most_scored_post_body, String second_most_scored_post_author, int second_most_scored_post_score, int amount_of_relevant_posts_on_analysis, String topic_engajement_level_in_word, String one_emoji_popular_opinion_about_topic, ArrayList<String> three_similar_topics_in_one_word, String main_subreddit_about_topic, String resume_about_analysis_and_popular_opinion) {
+    public FeelyticsBase(String most_scored_post_title, String most_scored_post_body, String most_scored_post_author, int most_scored_post_score, String second_most_scored_post_title, String second_most_scored_post_body, String second_most_scored_post_author, int second_most_scored_post_score, int amount_of_relevant_posts_on_analysis, String topic_engajement_level_in_word, String one_emoji_popular_opinion_about_topic, ArrayList<String> three_similar_topics_in_one_word, String main_subreddit_about_topic, String resume_about_analysis_and_popular_opinion) {
         this.most_scored_post_title = most_scored_post_title;
         this.most_scored_post_body = most_scored_post_body;
         this.most_scored_post_author = most_scored_post_author;
@@ -156,5 +156,18 @@ public class Basis {
 
     public void setResume_about_analysis_and_popular_opinion(String resume_about_analysis_and_popular_opinion) {
         this.resume_about_analysis_and_popular_opinion = resume_about_analysis_and_popular_opinion;
+    }
+
+    @Override
+    public String toString() {
+        return (this.most_scored_post_title + " | " + this.most_scored_post_body + " | "
+                + this.most_scored_post_author + " | " + this.most_scored_post_score + "\n\n"
+                + this.second_most_scored_post_title + " | " + this.second_most_scored_post_body + " | "
+                + this.second_most_scored_post_author + " | " + this.second_most_scored_post_score + "\n\n"
+                + this.amount_of_relevant_posts_on_analysis + " | " + this.topic_engajement_level_in_word + "\n\n"
+                + this.one_emoji_popular_opinion_about_topic + "\n"
+                + this.three_similar_topics_in_one_word + "\n\n"
+                + this.main_subreddit_about_topic + "\n"
+                + this.resume_about_analysis_and_popular_opinion);
     }
 }
